@@ -1,2 +1,2 @@
-# minecraft-clone
-A crappy clone of minecraft.
+### Minecraft Clone
+- A crappy clone of minecraft.
