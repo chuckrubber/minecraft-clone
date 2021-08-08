@@ -1,41 +1,23 @@
-#include "stdlib.h"
+#include <stdexcept>
+#include <iostream>
+#include "window.hpp"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height)
-{
-    glViewport(0, 0, width, height);
-}
-
-int main()
-{
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow *window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
-    if (window == NULL)
+int main () {
+    try
     {
-        glfwTerminate();
-        return -1;
+        engine::io::Window w(1000, 1000, "OpenGL");
+        while (!w.shouldClose()) {
+            w.pollEvents();
+            w.swapBuffers();
+        }
     }
-    glfwMakeContextCurrent(window);
-
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    catch(const std::exception& e)
     {
-        return -1;
+        std::cerr << e.what() << '\n';
+        return EXIT_FAILURE;
     }
-
-    glViewport(0, 0, 800, 600);
-
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    while (!glfwWindowShouldClose(window))
-    {
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-    glfwTerminate();
 
     return EXIT_SUCCESS;
+    
 }
