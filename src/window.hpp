@@ -20,10 +20,8 @@ namespace engine::io
         void pollEvents();
         void swapBuffers();
         bool shouldClose();
-
-    private:
         GLFWwindow *window;
-
+    private:
         void initWindow();
     };
 } // namespace engine::io
