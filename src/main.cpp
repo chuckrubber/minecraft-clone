@@ -1,26 +1,25 @@
 #include <stdexcept>
 #include <iostream>
 #include "window.hpp"
-#include "keyboard.hpp"
+#include "shader.hpp"
 
 int main()
 {
     try
     {
-        engine::io::Window w(800, 600, "OpenGL");
-        engine::io::Keyboard k(w.window);
-        while (!w.shouldClose())
+        engine::io::Window window(800, 600, "OpenGL");
+        Shader shader("assets/vert_shader.glsl", "assets/frag_shader.glsl");
+
+        while (!window.shouldClose())
         {
 
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            if (k.getKey(GLFW_KEY_C) == engine::io::PRESSED)
-            {
-                glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
-            }
+            
+            
 
             glClear(GL_COLOR_BUFFER_BIT);
-            w.pollEvents();
-            w.swapBuffers();
+            window.pollEvents();
+            window.swapBuffers();
         }
     }
     catch (const std::exception &e)
