@@ -23,7 +23,6 @@ std::string Shader::readFile(std::string path)
 
     copy(inputIt, emptyInputIt, stringInsert);
 
-
     return fileStr;
 }
 
@@ -42,8 +41,6 @@ void Shader::initShader()
 
     std::cout << vss;
     std::cout << fss;
-
-
 
     // Create OpenGL objects
     GLuint vertexShader, fragmentShader;

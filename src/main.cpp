@@ -12,10 +12,20 @@ int main()
         engine::io::Window window(800, 600, "OpenGL");
         Shader shader("assets/vert_shader.glsl", "assets/frag_shader.glsl");
         std::vector<Vertex> vertices = {
-            {{-.5f, -.5f, 0.f}, {0.f, 0.f}},
-            {{0.f, .5f, 0.f}, {0.f, 1.f}},
-            {{.5f, -.5f, 0.f}, {1.f, 1.f}}};
+            {{0.f, 0.f, 0.f}, {0.f, 0.f}},
+            {{0.f, 1.f, 0.f}, {0.f, 1.f}},
+            {{1.f, 1.f, 0.f}, {1.f, 1.f}},
+            {{0.f, 0.f, 0.f}, {0.f, 0.f}},
+            {{1.f, 1.f, 0.f}, {1.f, 1.f}},
+            {{1.f, 0.f, 0.f}, {1.f, 0.f}}};
+        // std::vector<Vertex> vertices2 = {
+        //     {{-.5f, -1.f, 0.f}, {0.f, 0.f}},
+        //     {{0.f, 0.f, 0.f}, {0.f, 1.f}},
+        //     {{.5f, -1.f, 0.f}, {1.f, 1.f}}};
         Mesh mesh(vertices);
+       // Mesh mesh2(vertices2);
+
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         while (!window.shouldClose())
         {
@@ -26,6 +36,8 @@ int main()
             shader.use();
             mesh.use();
             glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+           // mesh2.use();
+          //  glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 
             window.pollEvents();
             window.swapBuffers();
