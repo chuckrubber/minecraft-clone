@@ -6,22 +6,23 @@
 #include <string>
 #include <stdint.h>
 
-namespace engine::io
+class Window
 {
-    class Window
-    {
-    public:
-        Window(uint32_t width, uint32_t height, std::string title);
-        ~Window();
+public:
+    Window(uint32_t width, uint32_t height, std::string title);
+    ~Window();
 
-        std::string title;
-        uint32_t width, height;
+    std::string title;
+    uint32_t width, height;
 
-        void pollEvents();
-        void swapBuffers();
-        bool shouldClose();
-        GLFWwindow *window;
-    private:
-        void initWindow();
-    };
-} // namespace engine::io
+    void pollEvents();
+    void swapBuffers();
+    bool shouldClose();
+
+    float mouseX, mouseY;
+
+    GLFWwindow *window;
+
+private:
+    void initWindow();
+};

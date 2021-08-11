@@ -1,3 +1,5 @@
+#pragma once
+
 #include <glad/glad.h>
 #include <vector>
 #include <string>
@@ -11,9 +13,10 @@ public:
     ~Shader();
 
     void use();
+    GLuint shaderProgram;
 
 private:
-    GLuint shaderProgram;
+    
     std::string vertPath, fragPath;
     void initShader();
     std::string readFile(std::string path);
